@@ -16,7 +16,7 @@ matrix:
         - os: osx
           osx_image: xcode6.4
           compiler: clang
-          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.10 RUN_VIA_CTEST=0
+          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.10 RUN_VIA_CTEST=1
 
 cache:
   directories:
@@ -27,12 +27,12 @@ branches:
     - gh_pages
 
 script:
-  - free -tm
+  - vm_stat
   - ctest -VV -S ./cmake/usCTestScript_travis.cmake
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
-  - free -tm
+  - vm_stat
   - if [[ "$RUN_VIA_CTEST" == "0" ]]; then for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done; fi
   #- ls /tmp/us/bin
   #- ls .
-  - free -tm
+  - vm_stat
 
