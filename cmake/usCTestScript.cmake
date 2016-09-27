@@ -1,8 +1,8 @@
 
-macro(build_and_test)
+macro(build_only)
 
   set(CTEST_SOURCE_DIRECTORY ${US_SOURCE_DIR})
-  set(CTEST_BINARY_DIRECTORY "${CTEST_DASHBOARD_ROOT}/${CTEST_PROJECT_NAME}_${CTEST_DASHBOARD_NAME}")
+  set(CTEST_BINARY_DIRECTORY "/tmp/us")
 
   #if(NOT CTEST_BUILD_NAME)
   #  set(CTEST_BUILD_NAME "${CMAKE_SYSTEM}_${CTEST_COMPILER}_${CTEST_DASHBOARD_NAME}")
@@ -24,6 +24,10 @@ macro(build_and_test)
   if (res)
     message(FATAL_ERROR "CMake build error")
   endif()
+
+endmacro()
+
+macro(test_only)
 
   ctest_test(RETURN_VALUE res PARALLEL_LEVEL ${CTEST_PARALLEL_LEVEL})
   if (res)
@@ -96,6 +100,7 @@ foreach (_generator ${US_CMAKE_GENERATOR})
   foreach(i ${US_BUILD_CONFIGURATION})
     create_initial_cache(CTEST_INITIAL_CACHE ${config${i}})
     message("Testing build configuration: ${CTEST_DASHBOARD_NAME}")
-    build_and_test()
+    build_only()
+    test_only()
   endforeach()
 endforeach()
