@@ -12,11 +12,11 @@ matrix:
         - os: osx
           osx_image: xcode6.4
           compiler: clang
-          env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.10
+          env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.10 RUN_VIA_CTEST=1
         - os: osx
           osx_image: xcode6.4
           compiler: clang
-          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.10
+          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.10 RUN_VIA_CTEST=0
 
 cache:
   directories:
@@ -29,7 +29,7 @@ branches:
 script:
   - ctest -VV -S ./cmake/usCTestScript_travis.cmake
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
-  #- cd /tmp/us && ctest -R FrameworkTest --repeat-until-fail 10
+  - if [[ "$RUN_VIA_CTEST" == "0" ]]; then cd /tmp/us && ctest -R FrameworkTest --repeat-until-fail 10; fi
   #- ls /tmp/us/bin
   #- ls .
 
