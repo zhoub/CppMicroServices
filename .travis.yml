@@ -27,9 +27,12 @@ branches:
     - gh_pages
 
 script:
+  - free -tm
   - ctest -VV -S ./cmake/usCTestScript_travis.cmake
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
-  - if [[ "$RUN_VIA_CTEST" == "0" ]]; then cd /tmp/us && ctest -R FrameworkTest --repeat-until-fail 10; fi
+  - free -tm
+  - if [[ "$RUN_VIA_CTEST" == "0" ]]; then for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done; fi
   #- ls /tmp/us/bin
   #- ls .
+  - free -tm
 
