@@ -31,7 +31,7 @@ script:
   - ctest -VV -S ./cmake/usCTestScript_travis.cmake
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
   - vm_stat
-  - if [[ "$RUN_VIA_CTEST" == "0" ]]; then for test in AnyTest BundleRegistryPerformanceTest FrameworkEventTest FrameworkListenerTest FrameworkTest FrameworkFactoryTest HelgrindTest LDAPFilterTest LDAPQueryTest LogTest BundleEventTest BundleHooksTest BundleManifestTest BundleTest BundleResourceTest MemcheckTest ServiceFactoryTest ServiceHooksTest ServiceRegistryPerformanceTest ServiceRegistryTest ServiceTemplateTest ServiceTrackerTest StaticBundleResourceTest StaticBundleTest ServiceListenerTest SharedLibraryTest ConcurrencyTest InstallCleanTest InstallTest ExamplesCleanTest ExamplesCreateDirTest ExamplesConfigureTest-Debug ExamplesBuildTest-Debug ; do /tmp/us/bin/usFrameworkTestDriver $test; done; fi
+  - if [[ "$RUN_VIA_CTEST" == "0" ]]; then for test in AnyTest BundleRegistryPerformanceTest FrameworkEventTest FrameworkListenerTest FrameworkTest FrameworkFactoryTest HelgrindTest LDAPFilterTest LDAPQueryTest LogTest BundleEventTest BundleHooksTest BundleManifestTest BundleTest BundleResourceTest MemcheckTest ServiceFactoryTest ServiceHooksTest ServiceRegistryPerformanceTest ServiceRegistryTest ServiceTemplateTest ServiceTrackerTest StaticBundleResourceTest StaticBundleTest ServiceListenerTest SharedLibraryTest ConcurrencyTest ; do /tmp/us/bin/usFrameworkTestDriver $test; done; fi
   - ls /tmp/us/bin
   #- ls .
   - vm_stat
