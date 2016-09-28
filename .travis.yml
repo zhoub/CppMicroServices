@@ -16,7 +16,7 @@ matrix:
         - os: osx
           osx_image: xcode6.4
           compiler: clang
-          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.10 RUN_VIA_CTEST=1
+          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.10 RUN_VIA_CTEST=0
 
 cache:
   directories:
