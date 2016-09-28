@@ -32,7 +32,7 @@ script:
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
   - vm_stat
   - if [[ "$RUN_VIA_CTEST" == "0" ]]; then for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done; fi
-  #- ls /tmp/us/bin
+  - ls /tmp/us/bin
   #- ls .
   - vm_stat
 
