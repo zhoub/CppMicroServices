@@ -8,14 +8,14 @@ env:
     
 matrix:
     include:
-        #- os: osx
-        #  osx_image: xcode7.3
-        #  compiler: clang
-        #  env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.11 RUN_VIA_CTEST=1
-        #- os: osx
-        #  osx_image: xcode7.3
-        #  compiler: clang
-        #  env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.11 RUN_VIA_CTEST=0
+        - os: osx
+          osx_image: xcode7.3
+          compiler: clang
+          env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.11 RUN_VIA_CTEST=1
+        - os: osx
+          osx_image: xcode7.3
+          compiler: clang
+          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.11 RUN_VIA_CTEST=1
         # minimum supported compiler on OS X
         - os: osx
           osx_image: xcode6.4
@@ -24,7 +24,7 @@ matrix:
         - os: osx
           osx_image: xcode6.4
           compiler: clang
-          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.10 RUN_VIA_CTEST=0
+          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.10 RUN_VIA_CTEST=1
 
 cache:
   directories:
@@ -39,7 +39,7 @@ script:
   - ctest -VV -S ./cmake/usCTestScript_travis.cmake
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
   - vm_stat
-  - if [[ "$RUN_VIA_CTEST" == "0" ]]; then for test in AnyTest BundleRegistryPerformanceTest FrameworkEventTest FrameworkListenerTest FrameworkTest FrameworkFactoryTest HelgrindTest LDAPFilterTest LDAPQueryTest LogTest BundleEventTest BundleHooksTest BundleManifestTest BundleTest BundleResourceTest MemcheckTest ServiceFactoryTest ServiceHooksTest ServiceRegistryPerformanceTest ServiceRegistryTest ServiceTemplateTest ServiceTrackerTest StaticBundleResourceTest StaticBundleTest ServiceListenerTest SharedLibraryTest ConcurrencyTest ; do /tmp/us/bin/usFrameworkTestDriver $test; done; fi
+  - if [[ "$RUN_VIA_CTEST" == "0" ]]; then for test in AnyTest BundleRegistryPerformanceTest FrameworkEventTest FrameworkListenerTest FrameworkTest FrameworkFactoryTest HelgrindTest LDAPFilterTest LDAPQueryTest LogTest BundleEventTest BundleHooksTest BundleManifestTest BundleTest BundleResourceTest MemcheckTest ServiceFactoryTest ServiceHooksTest ServiceRegistryPerformanceTest ServiceRegistryTest ServiceTemplateTest ServiceTrackerTest StaticBundleResourceTest StaticBundleTest ServiceListenerTest ConcurrencyTest ; do /tmp/us/bin/usFrameworkTestDriver $test; done; fi
   - ls /tmp/us/bin
   #- ls .
   - vm_stat
