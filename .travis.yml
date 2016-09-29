@@ -8,14 +8,14 @@ env:
     
 matrix:
     include:
-        - os: osx
-          osx_image: xcode7.3
-          compiler: clang
-          env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.11 RUN_VIA_CTEST=1
-        - os: osx
-          osx_image: xcode7.3
-          compiler: clang
-          env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.11 RUN_VIA_CTEST=0
+        #- os: osx
+        #  osx_image: xcode7.3
+        #  compiler: clang
+        #  env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.11 RUN_VIA_CTEST=1
+        #- os: osx
+        #  osx_image: xcode7.3
+        #  compiler: clang
+        #  env: BUILD_CONFIGURATION=1 MACOSX_DEPLOYMENT_TARGET=10.11 RUN_VIA_CTEST=0
         # minimum supported compiler on OS X
         - os: osx
           osx_image: xcode6.4
@@ -35,7 +35,7 @@ branches:
     - gh_pages
 
 script:
-  - vm_stat
+  - brew install valgrind
   - ctest -VV -S ./cmake/usCTestScript_travis.cmake
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
   - vm_stat
