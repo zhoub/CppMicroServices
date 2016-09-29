@@ -35,7 +35,7 @@ branches:
     - gh_pages
 
 script:
-  - brew install valgrind
+  - if [[ "$MACOSX_DEPLOYMENT_TARGET" == "10.10" ]]; then brew install valgrind; fi
   - ctest -VV -S ./cmake/usCTestScript_travis.cmake
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
   - vm_stat
