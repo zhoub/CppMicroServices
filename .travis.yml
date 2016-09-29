@@ -35,12 +35,12 @@ branches:
     - gh_pages
 
 script:
-  - if [[ "$MACOSX_DEPLOYMENT_TARGET" == "10.10" ]]; then brew install valgrind; fi
+  #- if [[ "$MACOSX_DEPLOYMENT_TARGET" == "10.10" ]]; then brew install valgrind; fi
   - ctest -VV -S ./cmake/usCTestScript_travis.cmake
   #- for i in {1..10}; do /tmp/us/bin/usFrameworkTestDriver FrameworkTest; done
-  - vm_stat
+  #- vm_stat
   - if [[ "$RUN_VIA_CTEST" == "0" ]]; then for test in AnyTest BundleRegistryPerformanceTest FrameworkEventTest FrameworkListenerTest FrameworkTest FrameworkFactoryTest HelgrindTest LDAPFilterTest LDAPQueryTest LogTest BundleEventTest BundleHooksTest BundleManifestTest BundleTest BundleResourceTest MemcheckTest ServiceFactoryTest ServiceHooksTest ServiceRegistryPerformanceTest ServiceRegistryTest ServiceTemplateTest ServiceTrackerTest StaticBundleResourceTest StaticBundleTest ServiceListenerTest ConcurrencyTest ; do /tmp/us/bin/usFrameworkTestDriver $test; done; fi
-  - ls /tmp/us/bin
+  #- ls /tmp/us/bin
   #- ls .
-  - vm_stat
+  #- vm_stat
 

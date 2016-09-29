@@ -53,6 +53,7 @@ function(create_initial_cache var _shared _threading)
       US_BUILD_TESTING:BOOL=ON
       US_BUILD_SHARED_LIBS:BOOL=${_shared}
       US_ENABLE_THREADING_SUPPORT:BOOL=${_threading}
+      US_ENABLE_TSAN:BOOL=ON
       ")
   if(_shared)
     set(_initial_cache "${_initial_cache} US_BUILD_EXAMPLES:BOOL=ON
